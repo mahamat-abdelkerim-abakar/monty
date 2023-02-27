@@ -1,21 +1,21 @@
 #include "monty.h"
 /**
- * f_pall - prints the stack
- * @head: stack head
- * @counter: no used
- * Return: no return
+*pall - function to print stack's elements
+*@line_number: will not be used , we usse attribute not void
+*@stack: pointer to the head of the doubly linked list
+*Return: Nothing
 */
-void f_pall(stack_t **head, unsigned int counter)
-{
-	stack_t *h;
-	(void)counter;
 
-	h = *head;
-	if (h == NULL)
-		return;
-	while (h)
-	{
-		printf("%d\n", h->n);
-		h = h->next;
-	}
+void pall(stack_t **stack, unsigned int __attribute__((unused)) line_number)
+{
+stack_t *current = *stack;
+
+if (stack == NULL || *stack == NULL)
+return;
+
+while (current != NULL)
+{
+printf("%d\n", current->n);
+current = current->next;
+}
 }

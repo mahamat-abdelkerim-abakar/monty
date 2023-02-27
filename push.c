@@ -1,37 +1,44 @@
 #include "monty.h"
+#include <string.h>
 /**
- * f_push - add node to the stack
- * @head: stack head
- * @counter: line_number
- * Return: no return
+*push - add a neode in the list
+*@stack: pointer to a pointer to the doubly linked list
+*@line_number: line where there is an error
+*Return: nothing
 */
-void f_push(stack_t **head, unsigned int counter)
+void push(stack_t **stack, char *n, unsigned int line_number)
 {
-	int n, j = 0, flag = 0;
+	stack_t *new = NULL;
+	int i;
 
-	if (bus.arg)
+	new = malloc(sizeof(stack_t));
+	if (new == NULL)
 	{
-		if (bus.arg[0] == '-')
-			j++;
-		for (; bus.arg[j] != '\0'; j++)
+		fprintf(stderr, "Error: malloc failed\n");
+		exit(EXIT_FAILURE);
+	}
+	if (n == NULL)
+	{
+		fprintf(stderr, "L%d: usage: push integer\n", line_number);
+		exit(EXIT_FAILURE);
+	}
+	for (i = 0; n[i]; i++)
+	{
+		if (n[0] == '-' && i == 0)
+			continue;
+		if (n[i] < 48 || n[i] > 57)
 		{
-			if (bus.arg[j] > 57 || bus.arg[j] < 48)
-				flag = 1; }
-		if (flag == 1)
-		{ fprintf(stderr, "L%d: usage: push integer\n", counter);
-			fclose(bus.file);
-			free(bus.content);
-			free_stack(*head);
-			exit(EXIT_FAILURE); }}
-	else
-	{ fprintf(stderr, "L%d: usage: push integer\n", counter);
-		fclose(bus.file);
-		free(bus.content);
-		free_stack(*head);
-		exit(EXIT_FAILURE); }
-	n = atoi(bus.arg);
-	if (bus.lifi == 0)
-		addnode(head, n);
-	else
-		addqueue(head, n);
+			fprintf(stderr, "L%d: usage: push integer\n", line_number);
+			exit(EXIT_FAILURE);
+		}
+	}
+	new->n = atoi(n);
+	new->prev = NULL;
+	new->next = NULL;
+	if (*stack != NULL)
+	{
+		new->next = *stack;
+		(*stack)->prev = new;
+	}
+	*stack = new;
 }
