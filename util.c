@@ -40,3 +40,6 @@ int isnumber(char *str)
 
 	return (1);
 }
+
+
+
