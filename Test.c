@@ -16,7 +16,7 @@ p
 wt
 Bry
 D
-f
+fr
 ugf
 tk
 lcg
