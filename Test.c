@@ -14,9 +14,7 @@ Wtt
 er
 p
 wt
-Bry
-D
-frr
+
 ugf
 tk
 lcg
