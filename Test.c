@@ -13,7 +13,6 @@ Ei
 Wtt
 er
 p
-wt
 
 ugf
 tk
