@@ -16,8 +16,7 @@ p
 ugf
 tk
 lcg
-ety
-jffl
+l
 ty
 j
 fb
